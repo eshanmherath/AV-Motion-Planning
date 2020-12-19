@@ -40,13 +40,13 @@ def search():
     x, y, g = init[0], init[1], 0
 
     opened_nodes = [[g, x, y]]
-    closed_nodes = grid
+    closed_nodes = [[0 for i in range(len(grid[0]))] for j in range(len(grid))]
+    closed_nodes[x][y] = 1
 
     found = False  # Will set to true when the search is complete
     resign = False  # Will set to true if there is no more ways to expand
 
     while not found and not resign:
-
         if not opened_nodes:  # If there are no open nodes
             resign = False  # No need of doing this as we are returning
             print("Resigning. Failed to find a path")
